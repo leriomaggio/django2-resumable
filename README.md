@@ -1,6 +1,6 @@
-# Django Resumable (`django-resumable`)
+# Django 2.x Resumable (`django-resumable`)
 
-``django-resumable`` provides Django 2.1 backend stuff (e.g. `ModelFields`, `Forms`, `staticfiles`) 
+``django-resumable`` provides **Django 2.1** backend stuff (e.g. `ModelFields`, `Forms`, `staticfiles`) 
 to integrates [`resumable.js`](<https://github.com/23/Resumable.js>) in Django apps and admin.
 
 #### `ICYM`:
@@ -48,8 +48,7 @@ urlpatterns = [
 By default, the `resume-upload` view is provided with no restriction on the accesses
 (i.e. no `login_required` nor `staff_member_required`). 
 
-To enable the view only on restricted levels of permissions, the url integration can be
-easily modified, accordingly:
+To enable the view on restricted levels of permissions, urls should be modified accordingly:
 
 ```Python
 
