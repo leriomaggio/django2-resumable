@@ -3,7 +3,7 @@ from django.core.files.move import file_move_safe
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 
-from os import path
+from os import path, makedirs
 from .forms import FormResumableFileField
 from .widgets import ResumableWidget
 
@@ -30,9 +30,13 @@ class ResumableFileField(FileField):
         if file and (not file._committed or self.chunks_upload_to in file.name):
             # Commit the file to storage prior to saving the model
             fpath = file.name.replace(settings.MEDIA_URL, self._safe_media_root())
-            name = self.generate_filename(model_instance, path.basename(fpath))
+            basename = path.basename(fpath)
+            name = self.generate_filename(model_instance, basename)
             new_fpath = file.storage.get_available_name(path.join(self.storage.location, name),
                                                         max_length=self.max_length)
+            basefolder = path.dirname(new_fpath)
+            if not file.storage.exists(basefolder):
+                makedirs(basefolder)
             file_move_safe(fpath, new_fpath)
             setattr(model_instance, self.name, name)
             file._committed = True
