@@ -3,6 +3,8 @@
 ``django-resumable`` provides **Django 2.1** backend stuff (e.g. `ModelFields`, `Forms`, `staticfiles`) 
 to integrates [`resumable.js`](<https://github.com/23/Resumable.js>) in Django apps and admin.
 
+This projects build on the original `django-resumable` by [jeanphix](https://github.com/jeanphix/django-resumable), which is not maintained anymore, and does not support Django 2.x
+
 #### `ICYM`:
 
 (from the [documentation](https://github.com/23/resumable.js/blob/master/README.md))
@@ -26,9 +28,8 @@ to integrates [`resumable.js`](<https://github.com/23/Resumable.js>) in Django a
 
 ## Installation
 
-* ``pip install django-resumable``
+* ``pip install pip install git+https://github.com/leriomaggio/django2-resumable.git``
 * Add ``django_resumable`` to your ``INSTALLED_APPS``
-
 
 ## How to use
 
