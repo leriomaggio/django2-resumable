@@ -42,7 +42,7 @@ with uploaded file chunks:
 from django.urls import path, include
 
 urlpatterns = [
-    path('resumable_upload/', include('django_resumable.urls')),
+    path('resumable_upload/', include('django2_resumable.urls')),
 ]
 ```
 
@@ -57,7 +57,7 @@ from django.contrib.auth.views import login_required
 # To enable view in AdminForm
 from django.contrib.admin.views.decorators import staff_member_required
 
-from django_resumable.views import resumable_upload
+from django2_resumable.views import resumable_upload
 from django.urls import path, include
 
 urlpatterns = [
@@ -77,7 +77,7 @@ your Model class:
 ```Python
 
 from django.db import models
-from django_resumable.fields import ResumableFileField
+from django2_resumable.fields import ResumableFileField
 
 class MyModel(models.Model):
     file = ResumableFileField(chunks_upload_to='resumable_chunks', **kwargs)
@@ -96,7 +96,7 @@ you can use the `FormResumableFileField`:
 
 ```Python
 from django.forms import Form
-from django_resumable.forms import FormResumableFileField
+from django2_resumable.forms import FormResumableFileField
 
 
 class ResumableForm(Form):

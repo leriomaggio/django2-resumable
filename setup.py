@@ -1,24 +1,22 @@
 # -*- coding: utf-8 -*-
 from distutils.core import setup
-from setuptools import find_packages
-
 
 setup(
-    name='django-resumable',
+    name='django2-resumable',
     version='0.1.0',
     author=u'valerio maggio',
     author_email='valeriomaggio@gmail.com',
-    packages=['django_resumable'],
+    packages=['django2_resumable'],
     include_package_data=True,
     package_data={
-        'django_resumable': [
-            'templates/django_resumable/file_input.html',
-            'static/django_resumable/js/resumable.js',
+        'django2_resumable': [
+            'templates/django2_resumable/file_input.html',
+            'static/django2_resumable/js/resumable.js',
         ]
     },
-    url='https://github.com/leriomaggio/django-resumable',
+    url='https://github.com/leriomaggio/django2-resumable',
     license='MIT licence',
-    description='Django resumable uploads',
+    description='Django 2.x resumable uploads',
     long_description=open('README.md').read(),
     install_requires=[
         'Django >= 2.0',

@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy
 
 
 class ResumableWidget(FileInput):
-    template_name = 'django_resumable/file_input.html'
+    template_name = 'django2_resumable/file_input.html'
     clear_checkbox_label = ugettext_lazy('Clear')
 
     def render(self, name, value, attrs=None, **kwargs):
@@ -61,4 +61,4 @@ class ResumableWidget(FileInput):
     @property
     def media(self):
         js = ["resumable.js"]
-        return forms.Media(js=[static("django_resumable/js/%s" % path) for path in js])
+        return forms.Media(js=[static("django2_resumable/js/%s" % path) for path in js])

@@ -19,7 +19,8 @@ class ResumableFile:
         """Checks if the requested chunk exists.
         """
         return self.storage.exists(self.current_chunk_name) and \
-               self.storage.size(self.current_chunk_name) == int(self.kwargs.get('resumableCurrentChunkSize'))
+               self.storage.size(self.current_chunk_name) == int(
+            self.kwargs.get('resumableCurrentChunkSize'))
 
     @property
     def chunk_names(self):
@@ -76,7 +77,8 @@ class ResumableFile:
     def is_complete(self):
         """Checks if all chunks are already stored.
         """
-        print("resumableTotalSize", int(self.kwargs.get('resumableTotalSize')), ": size", self.size)
+        print("resumableTotalSize", int(self.kwargs.get('resumableTotalSize')),
+              ": size", self.size)
         return int(self.kwargs.get('resumableTotalSize')) == self.size
 
     def process_chunk(self, file):

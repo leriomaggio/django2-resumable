@@ -1,7 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.forms import FileField
 
-from django_resumable.widgets import ResumableWidget
+from django2_resumable.widgets import ResumableWidget
 
 
 class FormResumableFileField(FileField):
