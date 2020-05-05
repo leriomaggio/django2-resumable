@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
-from distutils.core import setup
+from setuptools import setup
+
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 setup(
     name='django2-resumable',
     version='0.1.0',
-    author=u'valerio maggio',
+    author=u'Valerio Maggio',
     author_email='valeriomaggio@gmail.com',
     packages=['django2_resumable'],
     include_package_data=True,
@@ -17,7 +20,7 @@ setup(
     url='https://github.com/leriomaggio/django2-resumable',
     license='MIT licence',
     description='Django 2.x resumable uploads',
-    long_description=open('README.md').read(),
+    long_description=long_description,
     long_description_content_type="text/markdown",
     install_requires=[
         'Django >= 2.0',
