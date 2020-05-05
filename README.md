@@ -30,7 +30,7 @@ reason why I ended up developing this in the first place_ (ed.)
 
 ## Installation
 
-* ``pip install pip install git+https://github.com/leriomaggio/django2-resumable.git``
+* ``pip install django2-resumable``
 * Add ``django2_resumable`` to your ``INSTALLED_APPS``
 
 ## How to use
