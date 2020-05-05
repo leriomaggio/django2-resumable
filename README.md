@@ -1,4 +1,4 @@
-# Django 2.x Resumable (`django-resumable`)
+# Django 2.x Resumable (`django2-resumable`)
 
 ``django2-resumable`` provides **Django 2.1** backend stuff (e.g. `ModelFields`, `Forms`, `staticfiles`) 
 to integrates [`resumable.js`](<https://github.com/23/Resumable.js>) in Django apps and admin.

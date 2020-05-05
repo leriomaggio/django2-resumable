@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='django2-resumable',
-    version='0.1.0',
+    version='0.1.1',
     author=u'Valerio Maggio',
     author_email='valeriomaggio@gmail.com',
     packages=['django2_resumable'],
