@@ -18,6 +18,7 @@ setup(
     license='MIT licence',
     description='Django 2.x resumable uploads',
     long_description=open('README.md').read(),
+    long_description_content_type="text/markdown",
     install_requires=[
         'Django >= 2.0',
     ],
