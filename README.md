@@ -1,9 +1,11 @@
 # Django 2.x Resumable (`django-resumable`)
 
-``django-resumable`` provides **Django 2.1** backend stuff (e.g. `ModelFields`, `Forms`, `staticfiles`) 
+``django2-resumable`` provides **Django 2.1** backend stuff (e.g. `ModelFields`, `Forms`, `staticfiles`) 
 to integrates [`resumable.js`](<https://github.com/23/Resumable.js>) in Django apps and admin.
 
-This projects build on the original `django-resumable` by [jeanphix](https://github.com/jeanphix/django-resumable), which is not maintained anymore, and does not support Django 2.x
+This projects build on the original `django-resumable` by [jeanphix](https://github.com/jeanphix/django-resumable), which (_afaik_) it 
+is not maintained anymore, and does not support Django 2.x - _main
+reason why I ended up developing this in the first place_ (ed.)
 
 #### `ICYM`:
 
@@ -29,7 +31,7 @@ This projects build on the original `django-resumable` by [jeanphix](https://git
 ## Installation
 
 * ``pip install pip install git+https://github.com/leriomaggio/django2-resumable.git``
-* Add ``django_resumable`` to your ``INSTALLED_APPS``
+* Add ``django2_resumable`` to your ``INSTALLED_APPS``
 
 ## How to use
 
@@ -58,7 +60,7 @@ from django.contrib.auth.views import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
 from django2_resumable.views import resumable_upload
-from django.urls import path, include
+from django.urls import path
 
 urlpatterns = [
     path('resumable-upload', login_required(resumable_upload), 
@@ -71,8 +73,8 @@ urlpatterns = [
 
 ### Model
 
-`django-resumable` provides a `ResumableFileField` that can be easily integrated in 
-your Model class:
+`django2-resumable` provides a `ResumableFileField` that can be easily 
+integrated in your Model class:
 
 ```Python
 
@@ -113,7 +115,7 @@ This widget is the default widget mapped by default to `ResumableFileField` inst
 
 ### Additional Settings
 
-``django-resumable`` comes with some extendable settings allowing for additional setup:
+``django2-resumable`` comes with some extendable settings allowing for additional setup:
 
 - `RESUMABLE_SUBDIR`: Directory in `MEDIA_ROOT` in which chunks will be uploaded. This settings will be 
                       overriden by any `chunks_upload_to` options specified at the time of definition of 
