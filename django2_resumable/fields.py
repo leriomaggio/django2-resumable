@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 
 from os import path, makedirs
+import urllib
 from .forms import FormResumableFileField
 from .widgets import ResumableWidget
 
@@ -32,7 +33,7 @@ class ResumableFileField(FileField):
         file = Field.pre_save(self, model_instance, add)
         if file and (not file._committed or self.chunks_upload_to in file.name):
             # Commit the file to storage prior to saving the model
-            fpath = file.name.replace(settings.MEDIA_URL, self._safe_media_root())
+            fpath = urllib.parse.unquote_plus(file.name.replace(settings.MEDIA_URL, self._safe_media_root()))
             basename = path.basename(fpath)
             name = self.generate_filename(model_instance, basename)
             new_fpath = file.storage.get_available_name(
