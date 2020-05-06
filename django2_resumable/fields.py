@@ -18,7 +18,7 @@ class ResumableFileField(FileField):
     def pre_save(self, model_instance, add):
 
         if not self.upload_to or (not callable(
-                self.upload_to) and self.upload_to != self.chunks_upload_to):
+                self.upload_to) and self.upload_to == self.chunks_upload_to):
             # this condition is verified whether "upload_to" has not been set in the
             # definition of field, or it has been set to the same location of the
             # chunks folder.
