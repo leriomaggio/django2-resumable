@@ -42,9 +42,12 @@ class ResumableFileField(FileField):
             if not file.storage.exists(basefolder):
                 makedirs(basefolder)
             file_move_safe(fpath, new_fpath)
-            setattr(model_instance, self.name, name)
+            # update name
+            new_basename = path.basename(new_fpath)
+            new_name = self.generate_filename(model_instance, new_basename)
+            setattr(model_instance, self.name, new_name)
             file._committed = True
-            file.name = name
+            file.name = new_name
         return file
 
     def _safe_media_root(self):
