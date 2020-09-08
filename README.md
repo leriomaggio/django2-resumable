@@ -85,7 +85,7 @@ class MyModel(models.Model):
     file = ResumableFileField(chunks_upload_to='resumable_chunks', **kwargs)
 ```
 
-The `ResumableFileField` field extends the default `django.core.fields.FielField` by including 
+The `ResumableFileField` field extends the default `django.core.fields.FileField` by including 
 an additional parameter, namely `chunks_upload_to` specifying the path in the `MEDIA_ROOT` in which
 temporary chunks will be uploaded. Once the upload is complete, the file will be 
 automatically moved to the `upload_to` destination folder (if any).
