@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 
 from os import path, makedirs
+import urllib
 from .forms import FormResumableFileField
 from .widgets import ResumableWidget
 
@@ -18,7 +19,7 @@ class ResumableFileField(FileField):
     def pre_save(self, model_instance, add):
 
         if not self.upload_to or (not callable(
-                self.upload_to) and self.upload_to != self.chunks_upload_to):
+                self.upload_to) and self.upload_to == self.chunks_upload_to):
             # this condition is verified whether "upload_to" has not been set in the
             # definition of field, or it has been set to the same location of the
             # chunks folder.
@@ -32,7 +33,7 @@ class ResumableFileField(FileField):
         file = Field.pre_save(self, model_instance, add)
         if file and (not file._committed or self.chunks_upload_to in file.name):
             # Commit the file to storage prior to saving the model
-            fpath = file.name.replace(settings.MEDIA_URL, self._safe_media_root())
+            fpath = urllib.parse.unquote_plus(file.name.replace(settings.MEDIA_URL, self._safe_media_root()))
             basename = path.basename(fpath)
             name = self.generate_filename(model_instance, basename)
             new_fpath = file.storage.get_available_name(
@@ -42,9 +43,12 @@ class ResumableFileField(FileField):
             if not file.storage.exists(basefolder):
                 makedirs(basefolder)
             file_move_safe(fpath, new_fpath)
-            setattr(model_instance, self.name, name)
+            # update name
+            new_basename = path.basename(new_fpath)
+            new_name = self.generate_filename(model_instance, new_basename)
+            setattr(model_instance, self.name, new_name)
             file._committed = True
-            file.name = name
+            file.name = new_name
         return file
 
     def _safe_media_root(self):
